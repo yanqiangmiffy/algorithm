@@ -1,3 +1,4 @@
+//Ë³Ğò²éÕÒ
 #include<stdio.h>
 typedef struct student{
     int id;

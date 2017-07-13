@@ -10,9 +10,9 @@ void hanio(int n,char from,char depend_on,char to){//将n个盘子由初始塔移动到目标
         move(1,from ,to);//只有一个盘子时：直接将初始塔上的盘子移动到目标塔
     }
     else{
-        hanio(n-1,from,to,depend_on);//现将初始塔的前n-1个盘子移动到借用塔上
+        hanio(n-1,from,to,depend_on);//现将初始塔的前n-1个盘子移动到借用塔上（需要借助目标塔）
         move(n,from,to);//然后将第n个盘子移动到目标塔上
-        hanio(n-1,depend_on,from,to);//最后将借用塔上的n-1个盘子移动到目标塔上
+        hanio(n-1,depend_on,from,to);//最后将借用塔上的n-1个盘子移动到目标塔上（需要借助初始塔）
     }
 }
 int main(){
