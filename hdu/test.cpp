@@ -1,28 +1,25 @@
 #include<iostream>
+#include<algorithm>
+#include<string>
+#include<cstring>
 using namespace std;
-int get_min(int arr[],int n);
 int main(){
-    int n,sum=0;
-    while(cin>>n){
-        int arr[n];
-        if(1){
-            for(int i=0;i<n;i++){
-                cin>>arr[i];
-                sum+=arr[i];
+    int n;
+    while(cin>>n&&n){
+        string colors[1000],bestColor;
+        int flag=0,num=0;//初始化
+        for(int i=0;i<n;i++){
+            cin>>colors[i];
+        }
+        for(int i=0;i<n;i++){
+            num=count(colors,colors+n,colors[i]);//查找个数
+            if(num>=flag){
+                flag=num;
+                bestColor=colors[i];
             }
-            cout<<sum;
-            int b=get_min(arr,n);
-            cout<<"��Сֵ"<<b;
         }
+        cout<<bestColor<<endl;
+        memset(colors,0,sizeof(colors));//清空
     }
-
-}
-int get_min(int arr[],int n){
-    int temp=0;
-    for(int i=0;i<n;i++){
-        if(temp<arr[i]){
-            temp=arr[i];
-        }
-    }
-    return temp;
+    return 0;
 }
