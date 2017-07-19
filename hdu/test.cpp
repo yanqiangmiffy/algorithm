@@ -1,25 +1,20 @@
 #include<iostream>
-#include<algorithm>
-#include<string>
-#include<cstring>
+
 using namespace std;
+int fac(int a,int b,int n){
+    if(n==1||n==2){
+        return 1;
+    }
+    return (a*f(n-1)+b*f(n-2))%7;
+}
 int main(){
-    int n;
-    while(cin>>n&&n){
-        string colors[1000],bestColor;
-        int flag=0,num=0;//初始化
-        for(int i=0;i<n;i++){
-            cin>>colors[i];
+    int a,b,n;
+    while(cin>>a&&cin>>b&&cin>>n){
+        if(a||b||n){
+
+        }else{
+            break;
         }
-        for(int i=0;i<n;i++){
-            num=count(colors,colors+n,colors[i]);//查找个数
-            if(num>=flag){
-                flag=num;
-                bestColor=colors[i];
-            }
-        }
-        cout<<bestColor<<endl;
-        memset(colors,0,sizeof(colors));//清空
     }
     return 0;
 }
