@@ -1,4 +1,4 @@
-//TOM的借书方案
+//TOM鍊熶功鏂规
 #include<stdio.h>
 int main(){
     int i,j,k;

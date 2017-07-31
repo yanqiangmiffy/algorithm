@@ -12,5 +12,4 @@ int main(){
     while(cin>>n){
         cout<<sum(n)<<endl;
     }
-
 }
