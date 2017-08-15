@@ -29,7 +29,7 @@ void dfs(int s)
     {
         for(int i=2; i<=n; i++)
         {
-            if(!vis[i]&&isp(i+a[s]))   //如果i没有用过，并且与钱一个数之和为素数
+            if(!vis[i]&&isp(i+a[s]))   //如果i没有用过，并且与前一个数之和为素数
             {
                 a[s+1]=i;
                 vis[i]=1;              //标记
@@ -46,10 +46,11 @@ int main()
     {
         memset(vis,0,sizeof(vis));
         a[1]=1;
-        if(t!=0) cout<<endl;            //一定注意输出格式
+        //if(t!=0) cout<<endl;            //一定注意输出格式
         t++;
         cout<<"Case "<<t<<":"<<endl;
         dfs(1);
+        cout<<endl;
     }
     return 0;
 }
