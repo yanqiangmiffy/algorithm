@@ -1,4 +1,5 @@
 //http://m.blog.csdn.net/zwj1452267376/article/details/47763589
+//https://www.2cto.com/kf/201508/434067.html
 #include<cstdio>
 #include<cstring>
 #include<algorithm>

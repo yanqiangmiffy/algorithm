@@ -1,79 +1,68 @@
+#include <cstdio>
+#include <algorithm>
 #include<iostream>
 using namespace std;
-int main(){
-    int m,n,last;
 
-    while(cin>>m>>n){
-        last=m%10;
-        if(last==0||last==1||last==5||last==6){
-            cout<<last<<endl;
-        }else if(last==4){
-            if(n%2==1){
-                cout<<4<<endl;
-            }
-            if(n%2==0){
-                cout<<6<<endl;
-            }
-        }else if(last==9){
-            if(n%2==1){
-                cout<<9<<endl;
-            }
-            if(n%2==0){
-                cout<<1<<endl;
-            }
-        }else if(last==2){
-            if(n%4==1){
-                cout<<2<<endl;
-            }
-            if(n%4==2){
-                cout<<4<<endl;
-            }
-            if(n%4==3){
-                cout<<8<<endl;
-            }
-            if(n%4==0){
-                cout<<6<<endl;
-            }
-        }else if(last==3){
-            if(n%4==1){
-                cout<<3<<endl;
-            }
-            if(n%4==2){
-                cout<<9<<endl;
-            }
-            if(n%4==3){
-                cout<<7<<endl;
-            }
-            if(n%4==0){
-                cout<<1<<endl;
-            }
-        }else if(last==7){
-            if(n%4==1){
-                cout<<7<<endl;
-            }
-            if(n%4==2){
-                cout<<9<<endl;
-            }
-            if(n%4==3){
-                cout<<3<<endl;
-            }
-            if(n%4==0){
-                cout<<1<<endl;
-            }
-        }else if(last==8){
-            if(n%4==1){
-                cout<<8<<endl;
-            }
-            if(n%4==2){
-                cout<<4<<endl;
-            }
-            if(n%4==3){
-                cout<<2<<endl;
-            }
-            if(n%4==0){
-                cout<<6<<endl;
-            }
-        }
-    }
-    return 0;
+#define SIZE 205
+
+struct Data_Type
+{
+	int from, to;
+	bool flag;
+}moving[SIZE];
+
+bool Cmp(const Data_Type a, const Data_Type b)
+{
+	return a.from < b.from;
+}
+
+int main(void)
+{
+	int i, testNum, n;
+
+	scanf("%d", &testNum);
+	while (testNum-- != 0)
+	{
+		scanf("%d", &n);
+		for (i = 0; i < n; i++)
+		{
+			scanf("%d%d", &moving[i].from, &moving[i].to);
+			if (moving[i].from > moving[i].to)
+			{
+				int temp = moving[i].from;
+				moving[i].from = moving[i].to;
+				moving[i].to = temp;
+			}
+			if (moving[i].from % 2 == 0)
+			{
+				moving[i].from--;
+			}
+			if (moving[i].to % 2 == 1)
+			{
+				moving[i].to++;
+			}
+			moving[i].flag = false;
+		}
+		sort(moving, moving+n, Cmp);
+
+		bool completion = false;
+		int count = -1, priorTo;
+		while (!completion)
+		{
+			completion = true;
+			count++;
+			priorTo = 0;
+			for (i = 0; i < n; i++)
+			{
+				if (!moving[i].flag && moving[i].from > priorTo)
+				{
+					moving[i].flag = true;
+					priorTo = moving[i].to;
+					completion = false;
+				}
+			}
+		}
+		printf("%d\n", count*10);
+	}
+	return 0;
 }
